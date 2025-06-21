@@ -21,7 +21,6 @@ export default function Board() {
         newValue[index] = turn
         setValue(newValue)
         setTurn(turn === 'X' ? 'O' : 'X')
-        console.log(newValue)
     }
 
     const checkWinner = () => {
@@ -40,14 +39,18 @@ export default function Board() {
             const [a, b, c] = winningCombinations[i]
             if (value[a] && value[a] === value[b] && value[a] === value[c]) {
                 setWinner(value[a])
-                console.log("winner is " + value[a])
                 return
             }
         }
          if (!value.includes(null)) {
             setWinner("Tie");
-            console.log("It's a tie!");
         }
+    }
+
+    const reset =  () =>{
+        setValue(initialValue)
+        setTurn('X')
+        setWinner('')       
     }
  
     return (
@@ -69,7 +72,7 @@ export default function Board() {
                     <Square onClick={() => handleClick(7)} value={value[7]} pointerEvent={!!winner} />
                     <Square onClick={() => handleClick(8)} value={value[8]} pointerEvent={!!winner} />
                 </div>
-                <Reset />
+                <Reset reset={reset}/>
             </div>
         </>
     )
