@@ -56,7 +56,10 @@ export default function Board() {
     return (
         <>
             <div className="Board-div">
-                <WinnerReveal winner={winner} turn={turn}/>
+                <div>
+                    <WinnerReveal winner={winner} turn={turn}/>
+                    <Reset reset={reset}/>
+                </div>
                 <div className="row">
                     <Square onClick={() => handleClick(0)} value={value[0]} pointerEvent={!!winner} />
                     <Square onClick={() => handleClick(1)} value={value[1]} pointerEvent={!!winner} />
@@ -72,7 +75,7 @@ export default function Board() {
                     <Square onClick={() => handleClick(7)} value={value[7]} pointerEvent={!!winner} />
                     <Square onClick={() => handleClick(8)} value={value[8]} pointerEvent={!!winner} />
                 </div>
-                <Reset reset={reset}/>
+                {/* <Reset reset={reset}/> */}
             </div>
         </>
     )
